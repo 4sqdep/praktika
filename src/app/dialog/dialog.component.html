@@ -2,10 +2,28 @@
 
 <div mat-dialog-content>
   <mat-form-field appearance="outline">
-    <mat-label>Outline form field</mat-label>
-    <input matInput placeholder="Placeholder">
-    <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+    <mat-label>Loyiha nomi</mat-label>
+    <input matInput placeholder="Loyiha nomi">
+    <mat-icon matSuffix>dialpad</mat-icon>
   </mat-form-field>
+  <mat-form-field>
+    <mat-label>Birlamchi hujjatlar kodi</mat-label>
+    <mat-select [(value)]="selectedFood">
+      <mat-option></mat-option>
+      @for (option of foods; track option) {
+        <mat-option [value]="option.value">{{ option.viewValue }}</mat-option>
+      }
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field class="example-full-width">
+    <mat-label>Ishchi Kalendar kiriting</mat-label>
+    <input matInput [matDatepicker]="picker">
+    <mat-hint>MM/DD/YYYY</mat-hint>
+    <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker [dateClass]="dateClass" #picker></mat-datepicker>
+
+  </mat-form-field>
+
 </div>
 
 
