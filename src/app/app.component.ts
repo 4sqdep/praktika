@@ -143,7 +143,7 @@ interface TableBasicExample {
   styleUrl: './app.component.css'
 })
 export class AppComponent implements TableBasicExample {
-  title = 'praktika1';
+  title = 'Direksiya';
 
   displayedColumns: string[] = ['position', 'name', 'weight', 'symbol', 'file_name',
     'file_autocad', 'smeta_pdf', 'smeta_excel', 'in_detail'];
