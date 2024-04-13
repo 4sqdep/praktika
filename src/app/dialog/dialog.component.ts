@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {
   MatDialogActions,
   MatDialogClose,
@@ -19,6 +19,7 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
 import {provideNativeDateAdapter} from '@angular/material/core';
 import {MatCalendarCellCssClasses} from '@angular/material/datepicker'
 import {MatRadioModule} from '@angular/material/radio';
+
 
 interface Food {
   value: string;
@@ -55,7 +56,7 @@ interface Construction {
   styleUrl: './dialog.component.css',
   providers: [provideNativeDateAdapter()]
 })
-export class DialogComponent {
+export class DialogComponent implements OnInit {
   projectForm!: FormGroup;
   favoriteSeason: string;
   seasons: string[] = ['Oybek', 'Hasan', 'Erkin', 'MuhammadSodiq'];

@@ -1,7 +1,13 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+
 .example-spacer {
   flex: 1 1 auto;
 }
-
 
 .container-table {
   width: 75%;
