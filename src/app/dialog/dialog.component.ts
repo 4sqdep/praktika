@@ -19,6 +19,8 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
 import {provideNativeDateAdapter} from '@angular/material/core';
 import {MatCalendarCellCssClasses} from '@angular/material/datepicker'
 import {MatRadioModule} from '@angular/material/radio';
+import {HttpClient} from "@angular/common/http";
+import {ApiService} from "../services/api.service";
 
 
 interface Food {
@@ -61,7 +63,7 @@ export class DialogComponent implements OnInit {
   favoriteSeason: string;
   seasons: string[] = ['Oybek', 'Hasan', 'Erkin', 'MuhammadSodiq'];
 
-  constructor(private formBuilder: FormBuilder,) {
+  constructor(private formBuilder: FormBuilder, private api: ApiService) {
     this.favoriteSeason = ''
   }
 
