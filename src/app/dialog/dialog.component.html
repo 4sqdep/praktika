@@ -1,28 +1,59 @@
 <h2 mat-dialog-title>Loyiha qo'shish</h2>
 
 <div mat-dialog-content>
-  <mat-form-field appearance="outline">
-    <mat-label>Loyiha nomi</mat-label>
-    <input matInput placeholder="Loyiha nomi">
-    <mat-icon matSuffix>dialpad</mat-icon>
-  </mat-form-field>
-  <mat-form-field>
-    <mat-label>Birlamchi hujjatlar kodi</mat-label>
-    <mat-select [(value)]="selectedFood">
-      <mat-option></mat-option>
-      @for (option of foods; track option) {
-        <mat-option [value]="option.value">{{ option.viewValue }}</mat-option>
-      }
-    </mat-select>
-  </mat-form-field>
-  <mat-form-field class="example-full-width">
-    <mat-label>Ishchi Kalendar kiriting</mat-label>
-    <input matInput [matDatepicker]="picker">
-    <mat-hint>MM/DD/YYYY</mat-hint>
-    <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
-    <mat-datepicker [dateClass]="dateClass" #picker></mat-datepicker>
+  <form [formGroup]="projectForm">
+    <mat-form-field appearance="outline">
+      <mat-label>Loyiha nomi</mat-label>
+      <input matInput formControlName="projectName" placeholder="Loyiha nomi">
+      <mat-icon matSuffix>dialpad</mat-icon>
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Obyekt tanlang</mat-label>
+      <mat-select [(value)]="selectedConstruction" formControlName="objectName">
+        <mat-option></mat-option>
+        @for (option of construction; track option) {
+          <mat-option [value]="option.value">{{ option.viewValue }}</mat-option>
+        }
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Birlamchi hujjatlar kodi</mat-label>
+      <mat-select [(value)]="selectedFood" formControlName="documentName">
+        <mat-option></mat-option>
+        @for (option of foods; track option) {
+          <mat-option [value]="option.value">{{ option.viewValue }}</mat-option>
+        }
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field class="example-full-width" appearance="outline">
+      <mat-label>Ishchi Kalendar kiriting</mat-label>
+      <input matInput [matDatepicker]="picker" formControlName="selectCalendar">
+      <mat-hint>MM/DD/YYYY</mat-hint>
+      <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker [dateClass]="dateClass" #picker></mat-datepicker>
+    </mat-form-field>
 
-  </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Izoh qoldirish</mat-label>
+      <textarea matInput formControlName="commentName"></textarea>
+    </mat-form-field>
+
+    <label id="example-radio-group-label">Quruvhi tanlang!</label>
+    <mat-radio-group formControlName="buildername"
+      aria-labelledby="example-radio-group-label"
+      class="example-radio-group"
+      [(ngModel)]="favoriteSeason">
+      @for (season of seasons; track season) {
+        <mat-radio-button class="example-radio-button" [value]="season">{{ season }}</mat-radio-button>
+      }
+    </mat-radio-group>
+  </form>
+  <div>Siz tanlagan quruvchi: {{ favoriteSeason }}</div>
+
+  <div mat-dialog-actions [align]="'end'">
+    <button mat-raised-button color="warn" mat-dialog-close>Yopish</button>
+    <button mat-raised-button color="primary" (click)="addProject">Jo'natish</button>
+  </div>
 
 </div>
 
