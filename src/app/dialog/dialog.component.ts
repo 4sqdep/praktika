@@ -19,8 +19,8 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
 import {provideNativeDateAdapter} from '@angular/material/core';
 import {MatCalendarCellCssClasses} from '@angular/material/datepicker'
 import {MatRadioModule} from '@angular/material/radio';
-import {HttpClient} from "@angular/common/http";
 import {ApiService} from "../services/api.service";
+import {HttpClient, HttpClientModule} from "@angular/common/http";
 
 
 interface Food {
@@ -37,6 +37,7 @@ interface Construction {
   selector: 'app-dialog',
   standalone: true,
   imports: [
+    HttpClientModule,
     MatDialogModule,
     MatButtonModule,
     MatDialogActions,
@@ -56,7 +57,8 @@ interface Construction {
   ],
   templateUrl: './dialog.component.html',
   styleUrl: './dialog.component.css',
-  providers: [provideNativeDateAdapter()]
+  providers: [provideNativeDateAdapter(), HttpClient],
+
 })
 export class DialogComponent implements OnInit {
   projectForm!: FormGroup;

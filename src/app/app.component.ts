@@ -7,6 +7,7 @@ import {MatDialog, MatDialogModule} from '@angular/material/dialog';
 import {DialogComponent} from "./dialog/dialog.component";
 import {MatTableModule} from '@angular/material/table';
 import {MatPaginatorModule, MatPaginatorIntl} from '@angular/material/paginator';
+import {HttpClient} from "@angular/common/http";
 
 
 export interface PeriodicElement {
@@ -140,7 +141,8 @@ interface TableBasicExample {
     MatPaginatorModule,
   ],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+  styleUrl: './app.component.css',
+  providers: [HttpClient]
 })
 export class AppComponent implements TableBasicExample {
   title = 'Direksiya';
